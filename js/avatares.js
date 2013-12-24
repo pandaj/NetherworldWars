@@ -62,8 +62,8 @@ avatares[6].elem = "neutral";
 /***** LUZ *****/
 
 avatares[7] = new Object();
-avatares[7].nombre = "Flonne";
-avatares[7].slug = "flonne";
+avatares[7].nombre = "Vulcanus";
+avatares[7].slug = "vulcanus";
 avatares[7].elem = "luz";
 
 
