@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+* { margin:0; padding:0; border:0; }
+
+@font-face {
+	font-family:'Denk One';
+	font-style:normal;
+	font-weight:400;
+	src:local('Denk One'),local('DenkOne-Regular'),url(fonts/DenkOne-Regular.woff) format('woff');
+}
+
+#NUEVO { width:320px; background-color:#000; }
+#NUEVO-titulo { color:#FFF; font-family:'Denk One'; padding:10px; text-align:center; }
+
+#NUEVO-seleccion { width:320px; height:200px; }
+
+#NUEVO-elige { width:156px; height:100%; float:left; margin-left:4px; }
+#NUEVO-elige li { list-style:none; cursor:pointer; width:48px; height:48px; float:left; border:2px solid #000; }
+#NUEVO-elige li.elegido { border-color:#FFF; }
+
+#NUEVO-personaje { float:left; }
+
+#NUEVO-footer { width:100%; height:10px; display:block; }

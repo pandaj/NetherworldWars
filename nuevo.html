@@ -5,19 +5,135 @@
 	<title>NUEVO JUEGO</title>
 	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="js/avatares.js"></script>
-	<script type="text/javascript" src="js/nuevo.js"></script>
+	<script type="text/javascript">
+		var avatarElige = -1;
+
+		function botonAvatar(btn) {
+			$("#avatar-" + btn).click(function(){
+				if (avatarElige != btn) {
+					if (avatarElige != -1) {
+						$("#avatar-" + btn).removeClass('elegido');
+					}
+					$("#NUEVO-personaje input").val( avatares[btn].slug );
+					$("#avatar-" + btn).addClass('elegido');
+					avatarElige = btn;
+					img.src = "avatars/" + avatares[btn].slug + "-anima.png";
+				}
+			});
+		}
+		
+		$(document).ready(function(e) {
+			for (a = 0; a < avatares.length; a++) {
+				var contAvatar = '<li id="avatar-' + a + '"><img src="avatars/' + avatares[a].slug + '-face.png" width="100%" height="100%"><p>' + avatares[a].nombre + '</p></li>';
+				$("#NUEVO-elige").append(contAvatar);
+				botonAvatar(a);
+			}
+		});
+		
+		
+		/*****************************************/
+		
+		
+		var posX = 0; //posicion absoluta en X
+		var posY = 0; // posicion absoluta en Y
+		var width = 1; // ancho de cada sprite
+		var height = 1; // alto de cada sprite
+		var indica = 0; // indicador del sprite actual
+		var tope = 6 - 1; // cantidad total de sprites - 1
+		var vel = 150; // velocidad de animacion
+		var animaCirculo; //funcion del intervalo de animacion
+		
+		//Crea el Canvas
+		var canvas;
+		var context;
+		$(document).ready(function(e) {
+			canvas = document.getElementById("NUEVO-personaje");
+			context = canvas.getContext("2d");
+        });
+		
+		//Al cargar la imagen
+		var img = new Image();
+		
+		img.onload = function(e) {
+			clearInterval(animaCirculo);
+			width = this.width / 6;
+			height = this.height / 2;
+			limpieza();
+			dibujaSprite();
+			animaCirculo = setInterval(animaC, vel);
+		}
+		
+		//Borrar Canvas
+		function limpieza() {
+			context.clearRect(posX, posY, width, height);
+		}
+		
+		//Dibujar Canvas
+		function dibujaSprite() {
+			context.drawImage(img, (width*indica), 0, width, height, posX, posY, width, height);
+			var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+			window.context.putImageData(imageData, 0, 0);
+		}
+		
+		//Ciclo Animacion Canvas
+		function animaC() {
+			if (indica == tope) {
+				indica = 0;
+			} else {
+				indica += 1;
+			}
+			clearInterval(animaCirculo);
+			animaCirculo = setInterval(animaC, vel);
+			limpieza();
+			dibujaSprite();
+		}
+		
+		/*
+		function girar() {
+			clearInterval(animaCirculo);
+			
+			if (indGiro == 4) {
+				indGiro = 1;
+			} else {
+				indGiro++;
+			}
+			if (indGiro == 2 || indGiro == 3) {
+				width = 81;
+				height = 148;
+				//borrar excedente abajo
+				context.clearRect(posX, posY + height, 82, 153 - height);
+				//borrar excedente al lado
+				context.clearRect(posX + width, posY, 82 - width, 153);
+			} else {
+				width = 82;
+				height = 153;
+			}
+			img = new Image();
+			img.src = "stand" + indGiro + "-valkyrie.png";
+			img.onload = function() {
+				limpieza();
+				cambiaSprite();
+				animaCirculo = setInterval(animaC, vel);
+			}
+		}
+		*/
+	</script>
 	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
 
 <body>
 <div id="NUEVO">
-	<div id="NUEVO-personaje">
-		ELIGE PERSONAJE<br>
-		<input type="hidden" name="personaje">
+	<div id="NUEVO-titulo">
+		ELIGE PERSONAJE
+	</div>
+	<input type="hidden" name="personaje" id="FORM-pj" />
+	<div id="NUEVO-seleccion">
 		<ul id="NUEVO-elige">
 			<!--aqui van los avatares-->
 		</ul>
+		<canvas id="NUEVO-personaje" width="160" height="200"></canvas>
 	</div>
+	<footer id="NUEVO-footer"></footer>
 </div>
 </body>
 </html>
