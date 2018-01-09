@@ -10,4 +10,5 @@
 	<content src="index.html" />
 	<preference name="DisallowOverscroll" value="true" />
 	<preference name="phonegap-version" value="cli-6.0.0" />
+	<access origin="http://manquehuito.cl" />
 </widget>

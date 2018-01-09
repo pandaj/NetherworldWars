@@ -27,6 +27,9 @@
 		<div id="deviceready">
 			<!-- Contenido -->
 		</div>
+		<a href="javascript: clickBoton();" style="padding:10px; border:1px solid #FFF;">
+        	HOLA, SOY UN BOTON
+		</a>
 	</div>
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
@@ -35,6 +38,17 @@
 			alert('Hola Mundo');
 			$('#deviceready').html('Holi :)');
 		});
+		function clickBoton() {
+			$.ajax({
+				url : 'http://manquehuito.cl/beta/test.php',
+				type: 'POST',
+				data: {
+					waka : 'Waka'
+				}
+			}).done(function(txt) {
+				alert(txt);
+			});
+		}
 	</script>
 </body>
 </html>
