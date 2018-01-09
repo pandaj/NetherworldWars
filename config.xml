@@ -8,7 +8,12 @@
 		Julio Cofre Gonzalez
     </author>
 	<content src="index.html" />
+
 	<preference name="DisallowOverscroll" value="true" />
 	<preference name="phonegap-version" value="cli-6.0.0" />
+
+	<plugin name="cordova-plugin-device" source="npm" spec="~1.1.6" />
+	<plugin name="cordova-plugin-network-information" source="npm" spec="~1.3.3" />
+	
 	<access origin="http://manquehuito.cl" />
 </widget>

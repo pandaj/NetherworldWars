@@ -41,7 +41,9 @@
 		function clickBoton() {
 			$.ajax({
 				url : 'http://manquehuito.cl/beta/test.php',
-				type: 'POST',
+				type: 'GET',
+				crossDomain: true,
+				cache: false,
 				data: {
 					waka : 'Waka'
 				}
