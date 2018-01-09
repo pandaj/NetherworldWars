@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+
+.app {
+	width:70%;
+	padding:5%;
+	color:#FFF;
+	background:#000;
+	margin:10% auto;
+}
