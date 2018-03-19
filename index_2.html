@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<title>Netherworld Wars</title>
+</head>
+<body>
+	<div class="app">
+		<h1>Hola Mundo</h1>
+		<div id="deviceready">
+			<!-- Contenido -->
+		</div>
+		<input type="text" name="waka" value="" />
+		<a id="boton" href="javascript: clickBoton2();" style="padding:10px; border:1px solid #FFF;">
+        	HOLA, SOY UN BOTON
+		</a>
+	</div>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(e) {
+			alert('Hola Mundo');
+			var valorGuardado = window.localStorage.getItem("clave");
+			if (valorGuardado) {
+				$('#deviceready').html( valorGuardado );
+			} else {
+				$('#deviceready').html('Holi :)');
+			}
+			checkConnection();
+		});
+		var activaBoton = true;
+		function clickBoton() {
+			if (activaBoton) {
+				activaBoton = false;
+				$('#boton').html('Cargando...');
+				$.ajax({
+					url			: 'http://appsredon.cl/apps/sikaform/test.php',
+					type		: 'GET',
+					crossDomain	: true,
+					data		: {
+						waka : 'Waka'
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						alert(xhr.status);
+						alert(thrownError);
+					}
+				}).done(function(txt) {
+					alert(txt);
+					$('#boton').html('EXITO');
+				});
+			}
+		}
+		function clickBoton2() {
+			var texto = $('input[name="waka"]').val();
+			if (texto != '') {
+				window.localStorage.setItem("clave", texto);
+			}
+		}
+		function checkConnection() {
+			var networkState = navigator.network.connection.type;
+			var states = {};
+			states[Connection.UNKNOWN]  = 'Unknown connection';
+			states[Connection.ETHERNET] = 'Ethernet connection';
+			states[Connection.WIFI]     = 'WiFi connection';
+			states[Connection.CELL_2G]  = 'Cell 2G connection';
+			states[Connection.CELL_3G]  = 'Cell 3G connection';
+			states[Connection.CELL_4G]  = 'Cell 4G connection';
+			states[Connection.NONE]     = 'No network connection';
+			alert('Connection type: ' + states[networkState]);
+		}
+	</script>
+</body>
+</html>

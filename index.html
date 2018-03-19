@@ -5,74 +5,83 @@
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="msapplication-tap-highlight" content="no" />
 	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/sight.css" />
 	<title>Netherworld Wars</title>
 </head>
 <body>
 	<div class="app">
-		<h1>Hola Mundo</h1>
-		<div id="deviceready">
-			<!-- Contenido -->
+		<div class="aviso">
+			<p>Debes girar tu celular para poder jugar.</p>
 		</div>
-		<input type="text" name="waka" value="" />
-		<a id="boton" href="javascript: clickBoton2();" style="padding:10px; border:1px solid #FFF;">
-        	HOLA, SOY UN BOTON
-		</a>
+		<div class="titulo">TEST YOUR SIGHT</div>
+		<div class="nivel">
+			<a class="btn-nivel nivel-1 elige" href="javascript: clickNivel(1);">
+            	<img src="sight/over-1.jpg" width="100%" />
+				<span>Lv 1</span>
+			</a>
+			<a class="btn-nivel nivel-2" href="javascript: clickNivel(2);">
+            	<img src="sight/over-2.jpg" width="100%" />
+				<span>Lv 2</span>
+			</a>
+			<a class="btn-nivel nivel-3" href="javascript: clickNivel(3);">
+            	<img src="sight/over-3.jpg" width="100%" />
+				<span>Lv 3</span>
+			</a>
+			<a class="btn-nivel nivel-4" href="javascript: clickNivel(4);">
+            	<img src="sight/over-4.jpg" width="100%" />
+				<span>Lv 4</span>
+			</a>
+			<a class="btn-nivel nivel-5" href="javascript: clickNivel(5);">
+            	<img src="sight/over-5.jpg" width="100%" />
+				<span>Lv 5</span>
+			</a>
+			<a class="btn-nivel nivel-6" href="javascript: clickNivel(6);">
+            	<img src="sight/over-6.jpg" width="100%" />
+				<span>Lv 6</span>
+			</a>
+			<a class="btn-nivel nivel-7" href="javascript: clickNivel(7);">
+            	<img src="sight/over-7.jpg" width="100%" />
+				<span>Lv 7</span>
+			</a>
+			<a class="boton" href="javascript: clickJugar();">PLAY</a>
+		</div>
+		<div class="cartas">
+			<a class="btn-carta carta-1" href="javascript: clickCarta(1);">
+				<img class="back" src="sight/fondo.jpg" width="100%" height="100%" />
+				<img class="front" src="sight/fail.jpg" width="100%" />
+			</a>
+			<a class="btn-carta carta-2" href="javascript: clickCarta(2);">
+				<img class="back" src="sight/fondo.jpg" width="100%" height="100%" />
+				<img class="front" src="sight/fail.jpg" width="100%" />
+			</a>
+			<a class="btn-carta carta-3" href="javascript: clickCarta(3);">
+				<img class="back" src="sight/fondo.jpg" width="100%" height="100%" />
+				<img class="front" src="sight/fail.jpg" width="100%" />
+			</a>
+			<a class="btn-carta carta-4" href="javascript: clickCarta(4);">
+				<img class="back" src="sight/fondo.jpg" width="100%" height="100%" />
+				<img class="front" src="sight/fail.jpg" width="100%" />
+			</a>
+			<a class="btn-carta carta-5" href="javascript: clickCarta(5);">
+				<img class="back" src="sight/fondo.jpg" width="100%" height="100%" />
+				<img class="front" src="sight/fail.jpg" width="100%" />
+			</a>
+			<a class="btn-carta carta-6" href="javascript: clickCarta(6);">
+				<img class="back" src="sight/fondo.jpg" width="100%" height="100%" />
+				<img class="front" src="sight/fail.jpg" width="100%" />
+			</a>
+			<a class="btn-carta carta-7" href="javascript: clickCarta(7);">
+				<img class="back" src="sight/fondo.jpg" width="100%" height="100%" />
+				<img class="front" src="sight/fail.jpg" width="100%" />
+			</a>
+			<div class="final">Elige la carta que crees que es la correcta</div>
+			<div class="resultado">EXITO</div>
+		</div>
 	</div>
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function(e) {
-			alert('Hola Mundo');
-			var valorGuardado = window.localStorage.getItem("clave");
-			if (valorGuardado) {
-				$('#deviceready').html( valorGuardado );
-			} else {
-				$('#deviceready').html('Holi :)');
-			}
-			checkConnection();
-		});
-		var activaBoton = true;
-		function clickBoton() {
-			if (activaBoton) {
-				activaBoton = false;
-				$('#boton').html('Cargando...');
-				$.ajax({
-					url			: 'http://appsredon.cl/apps/sikaform/test.php',
-					type		: 'GET',
-					crossDomain	: true,
-					data		: {
-						waka : 'Waka'
-					},
-					error: function (xhr, ajaxOptions, thrownError) {
-						alert(xhr.status);
-						alert(thrownError);
-					}
-				}).done(function(txt) {
-					alert(txt);
-					$('#boton').html('EXITO');
-				});
-			}
-		}
-		function clickBoton2() {
-			var texto = $('input[name="waka"]').val();
-			if (texto != '') {
-				window.localStorage.setItem("clave", texto);
-			}
-		}
-		function checkConnection() {
-			var networkState = navigator.network.connection.type;
-			var states = {};
-			states[Connection.UNKNOWN]  = 'Unknown connection';
-			states[Connection.ETHERNET] = 'Ethernet connection';
-			states[Connection.WIFI]     = 'WiFi connection';
-			states[Connection.CELL_2G]  = 'Cell 2G connection';
-			states[Connection.CELL_3G]  = 'Cell 3G connection';
-			states[Connection.CELL_4G]  = 'Cell 4G connection';
-			states[Connection.NONE]     = 'No network connection';
-			alert('Connection type: ' + states[networkState]);
-		}
+		
 	</script>
 </body>
 </html>

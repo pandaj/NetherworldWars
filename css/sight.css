@@ -1,0 +1,133 @@
+@font-face {
+	font-family:'DenkOne-Regular';
+	src:url('../fonts/DenkOne-Regular.woff') format('woff');
+	font-weight:normal;
+	font-style:normal;
+}
+* { display:block; margin:0; padding:0; outline:0; border:0; }
+
+.app {
+	width:100%;
+	height:100%;
+	position:absolute;
+	background:#000;
+	top:0;
+	left:0;
+}
+.aviso {
+	display:none;
+}
+.titulo {
+	font-family:'DenkOne-Regular';
+	position:absolute;
+	color:#FFF;
+	font-size:10vh; /*8vh*/
+	top:1vh;
+	width:100%;
+	text-align:center;
+}
+.nivel {
+    position: absolute;
+    top: 15vh;
+    width: 96vw;
+    height: 85vh;
+    left: 2vw;
+	display:none;
+}
+.boton {
+	font-family: 'DenkOne-Regular';
+    position: absolute;
+    color: #000;
+    font-size: 10vh;
+    bottom: 2vh;
+    width: 22%;
+    left: 0;
+    text-align: center;
+    padding: 1vh 0;
+    background: #FFF;
+    text-decoration: none;
+    right: 0;
+    margin: auto;
+}
+.btn-nivel {
+    float: left;
+    width: 9.7vw;
+    height: 63vh;
+    border: 1vw solid #FFF;
+    background: #FFF;
+    margin: 0 1vw;
+    border-radius: 1vw;
+    overflow: hidden;
+	position:relative;
+}
+.btn-nivel span {
+    position: absolute;
+    font-family: 'DenkOne-Regular';
+    font-size: 5vh;
+    top: 3vh;
+    width: 100%;
+    text-align: center;
+    color: #FFF;
+    background:#900;
+}
+.btn-nivel.elige {
+	border: 1vw solid #900;
+}
+
+
+/* -------------- CARTAS --------------- */
+.cartas {
+	position: absolute;
+    top: 15vh;
+    width: 96vw;
+    height: 85vh;
+    left: 2vw;
+}
+.btn-carta {
+    width:9.7vw;
+    height:63vh;
+    border:1vw solid #FFF;
+    background:#FFF;
+    border-radius:1vw;
+    overflow:hidden;
+	position:absolute;
+	top:0;
+}
+.carta-1 { left:1vw; } /* 10 + 0 */
+.carta-2 { left:14.7vw; } /* 10 + 137 */
+.carta-3 { left:28.4vw; } /* 10 + (137 x 2) */
+.carta-4 { left:42.1vw; } /* 10 + (137 x 3) */
+.carta-5 { left:55.8vw; } /* 10 + (137 x 4) */
+.carta-6 { left:69.5vw; } /* 10 + (137 x 5) */
+.carta-7 { left:83.2vw; } /* 10 + (137 x 6) */
+.btn-nivel .front {
+	position:absolute;
+	top:0;
+	left:0;
+}
+.btn-nivel .back {
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.btn-nivel.carta {
+	border: 1vw solid #900;
+}
+.final {
+    font-family: 'DenkOne-Regular';
+    position: absolute;
+    color: #FFF;
+    font-size: 7vh;
+    bottom: 2vh;
+    width: 100%;
+    text-align: center;
+}
+
+@media all and (orientation: portrait) {
+	.aviso {
+		display:block;
+		position:absolute;
+		z-index:99;
+	}	
+}
