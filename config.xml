@@ -11,6 +11,8 @@
 
 	<preference name="DisallowOverscroll" value="true" />
 	<preference name="phonegap-version" value="cli-6.4.0" />
+	<!--<preference name="orientation" value="portrait" />-->
+	<preference name="orientation" value="landscape" />
 
 	<preference name="android-minSdkVersion" value="14" />
 
