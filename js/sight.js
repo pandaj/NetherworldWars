@@ -15,7 +15,6 @@ for (var c = 1; c <= 7; c++) {
 		trigger: 'manual'
 	});
 }
-
 function numAzar(ini, fin) {
 	return Math.floor((Math.random() * fin) + ini);
 }
@@ -103,12 +102,12 @@ function cartasShuffle() {
 		midPos = tempPos1 + ((tempPos2 - tempPos1) / 2)
 	}
 	$('.carta-'+ cartaRan1).css({'z-index':8});
-	$('.carta-'+ cartaRan1).animate({'left':midPos+'px', 'zoom':1.1, 'top' : '2vh'}, speed);
+	$('.carta-'+ cartaRan1).animate({'left':midPos+'px', 'zoom':1.1, 'top' : '2vh'}, speed, 'linear');
 	$('.carta-'+ cartaRan2).css({'z-index':2});
-	$('.carta-'+ cartaRan2).animate({'left':midPos+'px', 'z-index':2, 'zoom':0.9, 'top' : '-2vh'}, speed);
+	$('.carta-'+ cartaRan2).animate({'left':midPos+'px', 'z-index':2, 'zoom':0.9, 'top' : '-2vh'}, speed, 'linear');
 	setTimeout(function() {
-		$('.carta-'+ cartaRan1).animate({'left':tempPos2+'px', 'zoom':1, 'top' : '0'}, speed);
-		$('.carta-'+ cartaRan2).animate({'left':tempPos1+'px', 'zoom':1, 'top' : '0'}, speed);
+		$('.carta-'+ cartaRan1).animate({'left':tempPos2+'px', 'zoom':1, 'top' : '0'}, speed, 'linear');
+		$('.carta-'+ cartaRan2).animate({'left':tempPos1+'px', 'zoom':1, 'top' : '0'}, speed, 'linear');
 	}, speed);
 	setTimeout(function() {
 		$('.carta-'+ cartaRan1).css({'z-index':5});
