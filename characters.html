@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+
+	<link rel="stylesheet" type="text/css" href="fonts/fonts.css" />
+	<link rel="stylesheet" type="text/css" href="src/characters/main.css" />
+
+	<title>Netherworld Wars</title>
+</head>
+<body>
+	<div style="position:absolute; top:-10px; width:1px; height:1px; overflow:hidden">
+		<img src="images/sonido-on.png" />
+	</div>
+
+	<div id="select-titulo">Elige tus 8 personajes <b>(0/8)</b></div>
+	<a id="btn-musica" href="javascript:cambiaMusica()">
+		<img src="images/sonido-off.png" width="100%" height="100%" />
+	</a>
+	<div id="select">
+		<!-- Texto -->
+	</div>
+	<a id="select-btn" href="javascript:eligePos();">CONTINUAR</a>
+	<div id="eligepos">
+		<div id="eligepos-cont">
+			<div id="eligepos-titulo">ELIGE POSICIONES DE COMBATE</div>
+			<div class="eligepos-pos" id="eligepos-x">
+				<img class="foto" src="overlords/adell-face.png" />
+			</div>
+			<a class="eligepos-pos" id="eligepos-0" data-id="-1" href="javascript:cambiaChar(0);">
+				<img class="sombra" src="images/sombra.png" />
+				<img class="foto" src="images/sombra.png" />
+				<div class="over"></div>
+			</a>
+			<a id="eligepos-final" href="javascript:finalizaPos();">COMBATIR</a>
+		</div>
+	</div>
+	<div id="alertas">
+		<div id="alertas-cont">
+			<p><!-- Aqui va el mensaje --></p>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="js/howler.min.js"></script>
+	<script type="text/javascript" src="src/characters/characters.js"></script>
+	<script type="text/javascript" src="src/characters/main.js"></script>
+	<script type="text/javascript">
+		for (var c = 0; c < characters.length; c++) {
+			$('#select').append(
+				'<div class="char" id="char-'+ c +'" data-id="'+ c +'">'+
+					'<div class="imagen">'+
+						'<img class="sombra" src="images/sombra.png" />'+
+						'<img class="foto" src="monsters/'+ characters[c].slug +'/1-standA.png" />'+
+					'</div>'+
+					'<div class="texto">'+ characters[c].nombre +'</div>'+
+					'<div class="stats">'+
+						'<div class="stats-vid"><img src="images/vida.png" /> '+ characters[c].vid +'</div>'+
+						'<div class="stats-atk"><img src="images/attack.png" /> '+ characters[c].atk +'</div>'+
+						'<div class="stats-acc"><img src="images/rango.png" /> '+ characters[c].def +'</div>'+
+						'<div class="stats-spd"><img src="images/speed.png" /> '+ characters[c].spd +'</div>'+
+					'</div>'+
+				'</div>');
+			
+		}
+
+		iMusica = false;
+		musicFondo.stop();
+		$('#btn-musica img').attr('src', 'images/sonido-on.png');
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+* { margin:0; padding:0; border:0; outline:0 !important; font-family:'Denk One'; }
+
+@font-face {
+	font-family:'Denk One';
+	src:url('DenkOne-Regular-webfont.eot');
+	src:url('DenkOne-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+		url('DenkOne-Regular-webfont.woff2') format('woff2'),
+		url('DenkOne-Regular-webfont.woff') format('woff'),
+		url('DenkOne-Regular-webfont.ttf') format('truetype'),
+		url('DenkOne-Regular-webfont.svg#denk_oneregular') format('svg');
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face {
+	font-family:'dark_crystalscript';
+	src:url('darkcrystalscript-webfont.woff2') format('woff2'),
+		url('darkcrystalscript-webfont.woff') format('woff');
+	font-weight:normal;
+	font-style:normal;
+}

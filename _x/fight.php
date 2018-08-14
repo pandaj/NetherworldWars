@@ -1,0 +1,130 @@
+<?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
+
+/*----- CARGA EL ZEND LOADER -----*/
+$ruta = '/home/julioappscofre';
+set_include_path(get_include_path().PATH_SEPARATOR.$ruta);
+require 'Zend/Loader/Autoloader.php';
+Zend_Loader_Autoloader::getInstance();
+
+
+/*----- CONECTAR CON BASE DE DATOS -----*/
+$config	= require_once 'config/db.php';
+$db		= Zend_Db::factory('Mysqli', $config);
+Zend_Db_Table_Abstract::setDefaultAdapter($db);
+
+
+/*----- Cargar Personajes -----*/
+$tablaFotos = new Zend_Db_Table('netherworld_clases');
+$queryFotos = $tablaFotos->select();
+$datosFotos = $tablaFotos->fetchAll($queryFotos);
+
+
+/*----- ELEGIDOS -----*/
+//$jugador = array('adell',	 0,  1,  2,  3,  4,  5,  6,  7);
+$jugador = array('adell',	 0,  0,  0,  0,  0,  0,  0,  0);
+$jugNums = array(57,		41, 42, 43, 49, 50, 51, 58, 59);
+//$enemigo = array('mao',		 8,  9, 10, 11, 12, 17, 28, 29);
+$enemigo = array('mao',		 2,  2,  2,  2, 32, 32, 32, 32);
+$eneNums = array(8,			 6,  7, 14, 15, 16, 22, 23, 24);
+?>
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>Netherworld - FIGHT</title>
+	<link rel="stylesheet" type="text/css" href="fonts/fonts.css" />
+	<link rel="stylesheet" type="text/css" href="fight/fight.css?v=<?php echo rand(0, 99999); ?>" />
+</head>
+<body>
+	<div id="fight-indica">Elige Personaje</div>
+	<div id="fight">
+		<?php
+        $num = 0;
+        $total = 64;
+        $jug = 1;
+        $ene = 1;
+		while ($num < $total) :
+			$num++;
+			$elNum = -1;
+			
+			//Ficha Jugador
+			if ($num == $jugNums[$jug]) :
+				$elNum = $jugador[$jug];
+				$indica = 'jugador';
+				$elData = $elNum;
+				$laFoto = 'characters/'.$datosFotos[$elNum]['slug'].'/b_01.png';
+				if ($jug < (count($jugador) - 1) ) :
+					$jug++;
+				endif;
+				
+			//Avatar Jugador
+			elseif ($num == $jugNums[0]) :
+				$elNum = $jugador[0];
+				$indica = 'jugAvat';
+				$elData = 'jugAva';
+				$laFoto = 'avatares/'.$elNum.'-face.png';
+				
+			//Ficha Enemigo
+			elseif ($num == $eneNums[$ene]) :
+				$elNum = $enemigo[$ene];
+				$indica = 'enemigo';
+				$elData = $elNum;
+				$laFoto = 'characters/'.$datosFotos[$elNum]['slug'].'/a_01.png';
+				if ($ene < (count($enemigo) - 1) ) :
+					$ene++;
+				endif;
+			
+			//Avatar Enemigo
+			elseif ($num == $eneNums[0]) :
+				$elNum = $enemigo[0];
+				$indica = 'eneAvat';
+				$elData = 'eneAva';
+				$laFoto = 'avatares/'.$elNum.'-face.png';
+			endif;
+			
+			if ($elNum != -1) :
+				?>
+				<a class="fichas <?php echo $indica; ?>" id="ficha<?php echo $num; ?>" data-id="<?php echo $elData; ?>" data-type="<?php echo $indica; ?>" href="javascript:clickChar(<?php echo $num; ?>);">
+					<?php if ($indica == 'jugador' || $indica == 'enemigo') : ?>
+						<img class="sombra" src="images/sombra.png" />
+					<?php endif; ?>
+					<img class="foto" src="<?php echo $laFoto; ?>" />
+					<div class="over"></div>
+					<div class="box">
+						<?php if ($indica == 'jugador' || $indica == 'enemigo') : ?>
+							<div class="box-vid"><?php echo ($datosFotos[$elNum]['vid']*3); ?></div>
+							<div class="box-atk"><?php echo $datosFotos[$elNum]['atk']; ?></div>
+							<div class="box-spd"><?php echo $datosFotos[$elNum]['spd']; ?></div>
+							<div class="box-acc"><?php echo $datosFotos[$elNum]['acc']; ?></div>
+						<?php endif; ?>
+					</div>
+				</a>
+				<?php
+			else :
+				?><a class="fichas" id="ficha<?php echo $num; ?>" href="javascript:clickVacio(<?php echo $num; ?>);" data-id="0" data-type="0">
+					<div class="over"></div>
+					<div class="box"></div>
+				</a><?php 
+			endif;
+		endwhile;
+		?>
+	</div>
+	<div id="fight-botones">
+		<a id="fight-deshacer" href="javascript:clickDeshacer();">DESHACER</a>
+		<a id="fight-listo" href="javascript:clickListo();">LISTO</a>
+	</div>
+	<a id="fight-turno" href="javascript:clickTurno();">
+		<p>JUGADOR 1<br><br>HAZ CLICK PARA COMENZAR</p>
+	</a>
+
+	<?php include 'characters/characters.php'; ?>
+
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="fight/fight.js?v=<?php echo rand(0, 99999); ?>"></script>
+</body>
+</html>

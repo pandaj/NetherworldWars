@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+* { font-family:'Denk One'; }
+
+body { background:#000; }
+
+#select-titulo { width:100%; text-align:center; padding-top:10px; color:#FFF; }
+#btn-musica { width:32px; height:32px; position:absolute; top:5px; right:5px; }
+
+#select { margin:auto; }
+
+.char {
+	width:100px; height:170px; display:inline-block; *display:inline; margin:4px 2px; text-align:center; /*background:#3C6;*/
+	cursor:pointer; border-radius:10px; background:url(../images/char-fondo.jpg);
+}
+.char.elige { background:#936; }
+.char .imagen { height:96px; width:80px; margin:auto; padding-top:4px; }
+.char .imagen .foto { position:relative; width:80px; height:80px; }
+.char .imagen .sombra { position:absolute; margin-top:56px; }
+.char .texto { font-size:13px; }
+.char.elige .texto { color:#FFF; }
+.char .stats { width:100%; height:50px; }
+.char .stats div {
+	float:left; width:40px; text-align:left; height:20px; margin:2px 0 2px 8px; font-size:12px; vertical-align:top; line-height:20px;
+}
+#select-btn {
+	width:100px; background:#936; margin:10px auto; text-align:center; padding:10px 0; cursor:pointer;
+	display:block; border-radius:10px; color:#FFF; text-decoration:none; font-size: 16px;
+}
+
+
+/*----- Lightbox Posiciones ------*/
+#eligepos { width:100%; height:100%; position:fixed; top:0; background:url(fondo.png); display:none; }
+#eligepos-cont { width:300px; height:300px; margin:20px auto; background:#FFF; padding:10px 5px; border-radius:10px; position:relative; }
+#eligepos-titulo { height:30px; text-align:center; }
+#eligepos-final {
+	width:100px; background:#936; margin:10px auto 0; text-align:center; padding:10px 0; cursor:pointer; position:relative;
+	display:block; font-size:16px; border-radius:10px; color:#FFF; text-decoration:none; top:216px;
+}
+.eligepos-pos {
+	width:60px; height:72px; overflow:hidden; position:absolute; background:url(../images/fondo-azul.jpg); background-size:60px 72px;
+}
+.eligepos-pos .foto { position:absolute; width:60px; height:60px; }
+#eligepos-x .foto { width:72px; height:72px; margin-left:-6px; }
+.eligepos-pos .sombra { position:absolute; width:60px; height:30px; margin-top:42px; }
+.eligepos-pos .over { width:100%; height:100%; opacity:0.7; background:#F33; display:none; }
+#eligepos-x { left:125px; }
+#eligepos-0 { left:245px; }
+#eligepos-1 { left:185px; }
+#eligepos-2 { left:185px; top:112px; }
+#eligepos-3 { left:125px; top:112px; }
+#eligepos-4 { left:125px; top:184px; }
+#eligepos-5 { left:65px; }
+#eligepos-6 { left:65px; top:112px; }
+#eligepos-7 { left:5px; }
+
+
+/*----- Lightbox Alerta ------*/
+#alertas { width:100%; height:100%; position:fixed; top:0; background:url(fondo.png); display:none; }
+#alertas-cont {
+	width:220px; height:100px; margin:20px auto; background:#FFF; padding:10px; border-radius:10px; position:relative; font-size:20px;
+	display:table;
+}
+#alertas-cont p { display:table-cell; vertical-align:middle; text-align:center; }

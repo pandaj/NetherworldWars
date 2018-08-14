@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+#new { width:100%; background-color:#000; padding-bottom:10px; }
+#new-titulo { color:#FFF; font-family:'Denk One'; padding:10px; text-align:center; font-size:25px; }
+#new-seleccion { width:360px; height:365px; }
+#new-elige { width:160px; height:100%; float:left; margin-left:10px; }
+#new-elige li { list-style:none; cursor:pointer; width:48px; height:48px; float:left; border:2px solid #000; }
+#new-elige li.elegido { border-color:#FFF; }
+#new-personaje { float:left; margin-left:10px; width:180px; }
+#new-texto { width:180px; font-family:'Denk One'; float:left; color:#FFF; text-align:center; font-size:20px; }
+#new-boton {
+	width:130px; float:left; margin:25px 25px 0; color:#FFF; font-family:'Denk One'; text-align:center;
+	font-size:20px; padding:10px 0; background:#C30; border-radius:10px;
+}
+#new-boton:hover { background:#C90; }
+
+#hidden { width:1px; height:1px; position:absolute; top:-10px; overflow:hidden; }

@@ -1,0 +1,60 @@
+<?php
+session_start();
+session_destroy();
+?>
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>Netherworld - TEAM</title>
+	<link rel="stylesheet" type="text/css" href="fonts/fonts.css" />
+	<link rel="stylesheet" type="text/css" href="characters/characters.css?v=<?php echo rand(0, 99999); ?>" />
+</head>
+<body>
+	<div id="select-titulo">Elige tus 8 personajes <b>(0/8)</b></div>
+	<div id="select">
+		<!-- Aqui van los personajes -->
+	</div>
+	<a id="select-btn" href="javascript:eligePos();">CONTINUAR</a>
+	<div id="select-menu"></div>
+	<div id="lightbox">
+		<div id="lightbox-cont">
+			<div id="lightbox-foto"><img src="" /><span id="lightbox-titulo"></span></div>
+			<div id="lightbox-stats">
+				<span><img src="fight/vida.png" />   VID:</span><div id="lightbox-vid"></div>
+				<span><img src="fight/attack.png" /> ATK:</span><div id="lightbox-atk"></div>
+				<span><img src="fight/speed.png" />  SPD:</span><div id="lightbox-spd"></div>
+				<span><img src="fight/rango.png" />  ACC:</span><div id="lightbox-acc"></div>
+			</div>
+			<a id="lightbox-elige" href="#">ELEGIR</a>
+			<a id="lightbox-cerrar" href="javascript:eligeCerrar();">
+				<img src="characters/cerrar.png" />
+			</a>
+		</div>
+	</div>
+	<div id="eligepos">
+		<div id="eligepos-cont">
+			<div id="eligepos-titulo">ELIGE POSICIONES DE COMBATE</div>
+			<div class="eligepos-pos" id="eligepos-x" style="background-image:url(avatares/adell-face.png);"></div>
+			<?php $num = 0; while($num < 8) : ?>
+				<a class="eligepos-pos" id="eligepos-<?php echo $num; ?>" data-id="-1" href="javascript:cambiaChar(<?php echo $num; ?>);">
+					<div class="over"></div>
+				</a>
+			<?php $num++; endwhile; ?>
+			<a id="eligepos-final" href="javascript:finalizaPos();">COMBATIR</a>
+		</div>
+	</div>
+	<div id="alertas">
+		<div id="alertas-cont">
+			<p><!-- Aqui va el mensaje --></p>
+		</div>
+	</div>
+
+	<?php include 'characters/characters.php'; ?>
+
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="characters/characters.js?v=<?php echo rand(0, 99999); ?>"></script>
+</body>
+</html>
